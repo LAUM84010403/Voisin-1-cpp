@@ -1,11 +1,23 @@
 #include <iostream>
 #include <vector>
 #include<algorithm>
+#include "ResourceLoader.h"
+#include <fstream>
+#include <sstream>
+#include <string>
+using namespace std;
 
 #include "Statistique.h"
 
 using namespace std;
 
+/**
+ * @brief Prends un vector et fais la moyenne de tous les chiffres
+ *
+ * @param vector tableau qui est remplis de nombres
+ *
+ * @return un double contenant la moyenne
+ */
 double CalculerMoyenneVector(vector<double> tableau)
 {
 	double moyenne;
@@ -21,6 +33,13 @@ double CalculerMoyenneVector(vector<double> tableau)
 	return moyenne;
 }
 
+/**
+ * @brief Prends un vector et calcule la medianne
+ *
+ * @param vector tableau qui est remplis de nombres
+ *
+ * @return un double contenant la medianne
+ */
 double CalculerMedianeVector(vector<double> tableau){
 
 	double mediane;
@@ -43,6 +62,13 @@ double CalculerMedianeVector(vector<double> tableau){
 	return 0;
 }
 
+/**
+ * @brief Prends un vector et fais l'ecart-type de tous les chiffres
+ *
+ * @param vector tableau qui est remplis de nombres
+ *
+ * @return un double contenant l'écart
+ */
 double CalculerEcartTypeVector(vector<double> tableau)
 {
 	double moyenne = CalculerMoyenneVector(tableau);
@@ -55,13 +81,21 @@ double CalculerEcartTypeVector(vector<double> tableau)
 	ecart = sqrt(CalculerMoyenneVector(tableau));
 
 	cout << "Ecart-type: " << ecart << endl;
-	return 0;
+	return ecart;
 }
 
+/**
+ * @brief Prends deux vectors de même longueurs et calcule la longueur Euclédienne
+ *
+ * @param1 Vector pour les première coordonnées 
+ * @parma2 Vector pour les deuxième coordonnées
+ *
+ * @return un double contenant la distance Euclidienne
+ */
 double CalculerEuclidienne(vector<double> valeur1, vector<double> valeur2) 
 {
 	if (!(valeur1.size() == valeur2.size())) {
-		cout << "Erreur, les deux points doivent etre dans les meme dimension!";
+		cout << "Erreur, les deux tableaux doivent etre dans les memes dimensions!";
 		return 1;
 	}
 	double diff{ 0 };
@@ -73,10 +107,18 @@ double CalculerEuclidienne(vector<double> valeur1, vector<double> valeur2)
 
 	diff = sqrt(diff);
 
-	cout << "difference Euclidienne: " << diff << endl;
+	cout << "Difference Euclidienne: " << diff << endl;
 	return 0;
 }
 
+/**
+ * @brief Prends deux vectors de même longueurs et calcule la longueur de Manhattan
+ *
+ * @param1 Vector pour les première coordonnées
+ * @parma2 Vector pour les deuxième coordonnées
+ *
+ * @return un double contenant la distance de Manhattan
+ */
 double CalculerManhattan(vector<double> valeur1, vector<double> valeur2)
 {
 	if (!(valeur1.size() == valeur2.size())) {
